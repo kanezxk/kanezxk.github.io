@@ -1,54 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>利用hexo搭建个人博客</title>
-    <url>/2020/05/28/%E5%88%A9%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>[简介] 本文主要介绍如何利用hexo搭建个人博客并部署到github上</p>
-<h1 id="准备软件"><a href="#准备软件" class="headerlink" title="准备软件"></a>准备软件</h1><ol>
-<li>NodeJS：  <a href="http://node.js.org/" target="_blank" rel="noopener">http://node.js.org/</a></li>
-<li>Git：  <a href="http://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">http://npm.taobao.org/mirrors/git-for-windows/</a>  （镜像源）</li>
-</ol>
-<h1 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h1><p>安装完NodeJS以及Git后，需要安装cnpm，从而可以使用淘宝镜像源下载安装包，具体做法如下：</p>
-<p>以管理员身份打开命令行（win + R，输入cmd），在命令行输入：</p>
-<p><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></p>
-<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p>命令行输入：</p>
-<p><code>cnpm install -g hexo-cli</code></p>
-<h1 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h1><p>在你所想要存放博客源文件的位置新建一个文件夹，并设置为当前路径（按住shift同时右击该文件，选择在此处打开cmd），之后在命令行输入：</p>
-<p><code>hexo init</code></p>
-<p>至此本地博客搭建完毕，可以在命令行输入 <code>hexo s</code> 来预览。</p>
-<hr>
-<p>下面介绍如何将本地博客部署到Github上去</p>
-<h1 id="github上新建仓库"><a href="#github上新建仓库" class="headerlink" title="github上新建仓库"></a>github上新建仓库</h1><p>需要在github上创建一个仓库 (没有注册github的话先注册一个账号， <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>) ，<br>注意仓库名 (Repository name) 必须是&lt;你的昵称&gt;.github.io</p>
-<h1 id="安装git的部署插件"><a href="#安装git的部署插件" class="headerlink" title="安装git的部署插件"></a>安装git的部署插件</h1><p>命令行输入：</p>
-<p><code>cnpm install hexo-deployer-git –save</code></p>
-<p>修改根目录下（之前新建的文件夹）的配置文件_config.yml，修改文件末尾type字段值，并添加repo和branch字段，其中repo字段值为你刚刚创建的github仓库的url。</p>
-<p><img src="01.jpg" alt="示例"></p>
-<p>之后打开gitbash，在命令行输入：</p>
-<p><code>git config --global user.name &quot;你的github用户名&quot;</code></p>
-<p>再输入：</p>
-<p><code>git config --global user.email &quot;XXX@XXX&quot;</code></p>
-<h1 id="推送到远端"><a href="#推送到远端" class="headerlink" title="推送到远端"></a>推送到远端</h1><p>返回命令行，输入： <code>hexo d</code> 将文件推送到github服务器端，第一次会出现弹窗，输入github用户名与密码完成验证即可。</p>
-<h1 id="访问个人博客"><a href="#访问个人博客" class="headerlink" title="访问个人博客"></a>访问个人博客</h1><p>至此，博客成功部署到github上去了，你就可以使用之前输入的仓库名(XXX.github.io)访问博客了（可能由于没有及时更新而出现无法打开的问题，可以尝试多刷新几次）。</p>
-<h1 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h1><p>默认主题为landscape，你可以上 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 寻找你心仪的主题。</p>
-<p>找到想要的主题后，可以进行克隆，在命令行输入：</p>
-<p><code>git clone https://github.com/XXX.git themes/&lt;主题名&gt;</code></p>
-<p>可以将主题克隆到你本地的themes文件夹下的&lt;主题名&gt;子文件夹中。</p>
-<p>之后修改根目录下的配置文件_config.yml，将其中的theme字段值改为新的主题名（前面的&lt;主题名&gt;），这样主题就应用到你的博客上了，之后可以根据官方文档进行一些个性化参数的配置。</p>
-<hr>
-<h1 id="常用的hexo命令"><a href="#常用的hexo命令" class="headerlink" title="*  常用的hexo命令"></a>*  常用的hexo命令</h1><p>hexo new “My New Post”  创建新博文</p>
-<p>hexo s  在4000端口启动本地服务器，可预览博客效果</p>
-<p>hexo clean 清除缓存文件 db.json 和已生成的静态文件 public</p>
-<p>hexo generate 生成静态文件</p>
-<p>hexo deploy 部署到远端</p>
-]]></content>
-      <categories>
-        <category>实战</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用Markdown编写文章初体验</title>
     <url>/2020/05/28/%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E5%86%99%E6%96%87%E7%AB%A0%E5%88%9D%E4%BD%93%E9%AA%8C/</url>
     <content><![CDATA[<p>[简介] 本文主要介绍使用markdown编写文档的常用格式</p>
@@ -143,6 +95,54 @@
       </categories>
       <tags>
         <tag>Web网页</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用hexo搭建个人博客</title>
+    <url>/2020/05/28/%E5%88%A9%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>[简介] 本文主要介绍如何利用hexo搭建个人博客并部署到github上</p>
+<h1 id="准备软件"><a href="#准备软件" class="headerlink" title="准备软件"></a>准备软件</h1><ol>
+<li>NodeJS：  <a href="http://node.js.org/" target="_blank" rel="noopener">http://node.js.org/</a></li>
+<li>Git：  <a href="http://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">http://npm.taobao.org/mirrors/git-for-windows/</a>  （镜像源）</li>
+</ol>
+<h1 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h1><p>安装完NodeJS以及Git后，需要安装cnpm，从而可以使用淘宝镜像源下载安装包，具体做法如下：</p>
+<p>以管理员身份打开命令行（win + R，输入cmd），在命令行输入：</p>
+<p><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></p>
+<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p>命令行输入：</p>
+<p><code>cnpm install -g hexo-cli</code></p>
+<h1 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h1><p>在你所想要存放博客源文件的位置新建一个文件夹，并设置为当前路径（按住shift同时右击该文件，选择在此处打开cmd），之后在命令行输入：</p>
+<p><code>hexo init</code></p>
+<p>至此本地博客搭建完毕，可以在命令行输入 <code>hexo s</code> 来预览。</p>
+<hr>
+<p>下面介绍如何将本地博客部署到Github上去</p>
+<h1 id="github上新建仓库"><a href="#github上新建仓库" class="headerlink" title="github上新建仓库"></a>github上新建仓库</h1><p>需要在github上创建一个仓库 (没有注册github的话先注册一个账号， <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>) ，<br>注意仓库名 (Repository name) 必须是&lt;你的昵称&gt;.github.io</p>
+<h1 id="安装git的部署插件"><a href="#安装git的部署插件" class="headerlink" title="安装git的部署插件"></a>安装git的部署插件</h1><p>命令行输入：</p>
+<p><code>cnpm install hexo-deployer-git –save</code></p>
+<p>修改根目录下（之前新建的文件夹）的配置文件_config.yml，修改文件末尾type字段值，并添加repo和branch字段，其中repo字段值为你刚刚创建的github仓库的url。</p>
+<p><img src="01.jpg" alt="示例"></p>
+<p>之后打开gitbash，在命令行输入：</p>
+<p><code>git config --global user.name &quot;你的github用户名&quot;</code></p>
+<p>再输入：</p>
+<p><code>git config --global user.email &quot;XXX@XXX&quot;</code></p>
+<h1 id="推送到远端"><a href="#推送到远端" class="headerlink" title="推送到远端"></a>推送到远端</h1><p>返回命令行，输入： <code>hexo d</code> 将文件推送到github服务器端，第一次会出现弹窗，输入github用户名与密码完成验证即可。</p>
+<h1 id="访问个人博客"><a href="#访问个人博客" class="headerlink" title="访问个人博客"></a>访问个人博客</h1><p>至此，博客成功部署到github上去了，你就可以使用之前输入的仓库名(XXX.github.io)访问博客了（可能由于没有及时更新而出现无法打开的问题，可以尝试多刷新几次）。</p>
+<h1 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h1><p>默认主题为landscape，你可以上 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 寻找你心仪的主题。</p>
+<p>找到想要的主题后，可以进行克隆，在命令行输入：</p>
+<p><code>git clone https://github.com/XXX.git themes/&lt;主题名&gt;</code></p>
+<p>可以将主题克隆到你本地的themes文件夹下的&lt;主题名&gt;子文件夹中。</p>
+<p>之后修改根目录下的配置文件_config.yml，将其中的theme字段值改为新的主题名（前面的&lt;主题名&gt;），这样主题就应用到你的博客上了，之后可以根据官方文档进行一些个性化参数的配置。</p>
+<hr>
+<h1 id="常用的hexo命令"><a href="#常用的hexo命令" class="headerlink" title="*  常用的hexo命令"></a>*  常用的hexo命令</h1><p>hexo new “My New Post”  创建新博文</p>
+<p>hexo s  在4000端口启动本地服务器，可预览博客效果</p>
+<p>hexo clean 清除缓存文件 db.json 和已生成的静态文件 public</p>
+<p>hexo generate 生成静态文件</p>
+<p>hexo deploy 部署到远端</p>
+]]></content>
+      <categories>
+        <category>实战</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
