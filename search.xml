@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>使用Markdown编写文章初体验</title>
+    <url>/2020/05/28/%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E5%86%99%E6%96%87%E7%AB%A0%E5%88%9D%E4%BD%93%E9%AA%8C/</url>
+    <content><![CDATA[<p>[简介] 本文主要介绍使用markdown编写文档的常用格式</p>
+<h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>二级标题两个#号。</p>
+<h1 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h1><p>这是第一段。</p>
+<p>这是第二段（直接使用回车空一行）。</p>
+<h1 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h1><blockquote>
+<p>这是一段引用段落，将会被高亮显示（使用 &gt; 符号）；</p>
+<blockquote>
+<p>这是二级嵌套引用（使用 &gt;&gt; 表示）；</p>
+<blockquote>
+<p>这是三级嵌套引用（使用 &gt;&gt;&gt; 表示）；</p>
+<blockquote>
+<p>以此类推…..</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h2><ul>
+<li>使用 * 加一个空格表示；</li>
+<li>也可以用 + 或 - 替代。</li>
+</ul>
+<h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><ol>
+<li>使用阿拉伯数字加上 . 和空格来表示；</li>
+<li>第二行；</li>
+<li>第三行；</li>
+</ol>
+<h1 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h1><p>格式：</p>
+<p><code>[超链接显示文字](https://kanezxk.github.io &quot;标题title&quot;)</code></p>
+<p>超链接title为链接上的浮动提示信息，一般可省略。</p>
+<p>样式：</p>
+<p><a href="https://kanezxk.github.io" target="_blank" rel="noopener" title="标题title">超链接显示文字</a></p>
+<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><p>格式：</p>
+<p><code>![显示文字](https://XXX.XXX.XXX &quot;图片title&quot;)</code></p>
+<p>在超链接基础上多了一个” ! “  。</p>
+<p>样式：</p>
+<p><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588340329758&di=e72489ab96931ebed494989d2f132087&imgtype=0&src=http%3A%2F%2Fdimg02.c-ctrip.com%2Fimages%2Ftg%2F442%2F496%2F434%2Fd9e374b386644b86ba25103b166f739f_C_1600_1200_Mtg_7.jpg" alt="显示文字" title="图片title"></p>
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><h2 id="单行代码块"><a href="#单行代码块" class="headerlink" title="单行代码块"></a>单行代码块</h2><p>使用反单个双引号包起来（键盘第二行第一个键）。</p>
+<p>格式：</p>
+<p>`这是一个单行代码块`</p>
+<p>样式：</p>
+<p><code>这是一个单行代码块</code></p>
+<h2 id="多行代码块"><a href="#多行代码块" class="headerlink" title="多行代码块"></a>多行代码块</h2><p>可以使用三个反引号来引用代码块，也可以使用一个tab或四个空格来表示 。在 ``` 后可以添加代码语言，可以对关键字进行不同颜色的显示。</p>
+<p>格式：</p>
+<p>样式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;Hello world\n&quot;)；</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h1><p>分割线可以由至少3个 - 来表示，其中的 “ - “ 号可以用 “ * “ 或 “ _ “ 来替换。</p>
+<p>格式：</p>
+<ol>
+<li>-–</li>
+<li>***</li>
+<li>___</li>
+</ol>
+<p>样式：</p>
+<hr>
+<center>这是分割线</center>
+
+<hr>
+<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>分割线前后的冒号表示对齐方式，写在左边表示左对齐，右边为右对齐，两边都写表示居中。</p>
+<p>格式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">|编号 |产品 |仓库 |</span><br><span class="line">|:-  |-:   |:-:  |</span><br><span class="line">|01 |keyboard |Beijing|</span><br><span class="line">|02 |mouse |Shanghai|</span><br><span class="line">|03 |disk |Shenzhen|</span><br></pre></td></tr></table></figure>
+
+<p>样式：</p>
+<table>
+<thead>
+<tr>
+<th align="left">编号</th>
+<th align="right">产品</th>
+<th align="center">仓库</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">01</td>
+<td align="right">keyboard</td>
+<td align="center">Beijing</td>
+</tr>
+<tr>
+<td align="left">02</td>
+<td align="right">mouse</td>
+<td align="center">Shanghai</td>
+</tr>
+<tr>
+<td align="left">03</td>
+<td align="right">disk</td>
+<td align="center">Shenzhen</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>备忘录</category>
+      </categories>
+      <tags>
+        <tag>Web网页</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机组成原理-汉明码</title>
+    <url>/2020/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E6%B1%89%E6%98%8E%E7%A0%81/</url>
+    <content><![CDATA[<p>[简介] 本文主要介绍汉明码的结构与纠错原理</p>
+<h1 id="1-检错与纠错能力"><a href="#1-检错与纠错能力" class="headerlink" title="1-检错与纠错能力"></a>1-检错与纠错能力</h1><p>在介绍检错和纠错能力之前，首先需要引入一个概念——最小汉明距离，即从任意一个有效编码变换到另一个有效编码所需改变的最小位数。假设一种编码方式的最小汉明距离为 L，它的最大检错位数为 D，最大纠错位数为 C，则它们之间满足：L-1 = D+C（且D ≥ C）</p>
+<h1 id="2-汉明码的结构"><a href="#2-汉明码的结构" class="headerlink" title="2-汉明码的结构"></a>2-汉明码的结构</h1><p>汉明编码的基本思想就是将数据划分为若干组，每组分别用一位冗余位进行校验（通常为偶校验），同时允许不同组间有交叉，而实际上也正式利用不同组间的交叉，当有几组校验出错时，说明是这几组所共同检测的位发生了错误。</p>
+<p>在进行汉明编码之前，首先要确定所需增加校验位的位数，可以根据 2<sup>r</sup> ≥ d+r+1来确定，其中 r 为所需添加检验位的位数，d 为信息位的位数。它的解释是这样的，增加的 r 位检验位能够表示 2<sup>r</sup> 种不同的情况，它需要至少能标识出 d 位信息位以及 r 位检验位分别出了一位错误以及所有位都没有出错的情况，即 d+r+1 种不同出错情况。</p>
+<p>在确定了所需增加的检验位的位数后，就可以将r位检验位安排到第 2<sup>r</sup> 位上（i = 1，2，3……r），再将信息位按照原来的相对顺序放到剩余位上。而每个检验位的取值可以根据它需要校验的这组数据来确定，以偶检验为例，它的取值即为这组数据各位的异或运算结果。</p>
+<p>下面再介绍每位检验位需要校验哪些位上的数据。为了使得出错后能够根据各检验位组合起来形成的二进制数 r<sub>1</sub>r<sub>2</sub>r<sub>3</sub>…. 的十进制值去指示出错位，就可以将 r<sub>i</sub> (i=1,2,3…) 去检测第e位，其中e的取值为除第 i 位取值为 1、其余位取值任意的所有二进制数的十进制值。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>机组</tag>
+      </tags>
+  </entry>
+</search>
