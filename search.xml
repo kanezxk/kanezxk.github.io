@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PAT乙级_1002</title>
+    <url>/2020/06/02/PAT%E4%B9%99%E7%BA%A7-1002/</url>
+    <content><![CDATA[<h2 id="【介绍】"><a href="#【介绍】" class="headerlink" title="【介绍】"></a>【介绍】</h2><p>读入一个正整数 <em>n</em>，计算其各位数字之和，用汉语拼音写出和的每一位数字。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>每个测试输入包含 1 个测试用例，即给出自然数 <em>n</em> 的值。这里保证 <em>n</em> 小于 10100。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>在一行内输出 <em>n</em> 的各位数字之和的每一位，拼音数字间有 1 空格，但一行中最后一个拼音数字后没有空格。</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1234567890987654321123456789</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yi san wu</span><br></pre></td></tr></table></figure>
+
+<h2 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *number[<span class="number">10</span>] = &#123;<span class="string">"ling"</span>, <span class="string">"yi"</span>, <span class="string">"er"</span>, <span class="string">"san"</span>, <span class="string">"si"</span>, <span class="string">"wu"</span>, <span class="string">"liu"</span>, <span class="string">"qi"</span>, <span class="string">"ba"</span>, <span class="string">"jiu"</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> s[<span class="number">3</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> i, sum, n;</span><br><span class="line">    <span class="keyword">char</span> t;</span><br><span class="line">    i = sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>((t = getchar()) != <span class="string">'\n'</span>)</span><br><span class="line">        sum += t - <span class="string">'0'</span>;</span><br><span class="line">    <span class="keyword">while</span>(sum)</span><br><span class="line">    &#123;</span><br><span class="line">        s[i] = sum % <span class="number">10</span>;</span><br><span class="line">        sum /= <span class="number">10</span>;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    n = i;</span><br><span class="line">    <span class="keyword">for</span> (i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i != n - <span class="number">1</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s"</span>, number[s[i]]); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="【经验】"><a href="#【经验】" class="headerlink" title="【经验】"></a>【经验】</h2><p>开始时想直接用整数类型保存输入数，然后用取余的方式依次取出从低位到高位的数进行相加，结果反复出错。后来才注意到输入的正整数最大有可能取到100位，int型根本保存不了，只好用 getchar() 取出每一位。下为错误代码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span> *number[<span class="number">10</span>] = &#123; <span class="string">"ling"</span>, <span class="string">"yi"</span>, <span class="string">"er"</span>, <span class="string">"san"</span>, <span class="string">"si"</span>, <span class="string">"wu"</span>, <span class="string">"liu"</span>, <span class="string">"qi"</span>, <span class="string">"ba"</span>, <span class="string">"jiu"</span> &#125;;</span><br><span class="line">	<span class="keyword">int</span> s[<span class="number">3</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">int</span> i, n, sum;</span><br><span class="line">	i = sum = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="keyword">while</span> (n)</span><br><span class="line">	&#123;</span><br><span class="line">		sum += n % <span class="number">10</span>;</span><br><span class="line">		n /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (sum)</span><br><span class="line">	&#123;</span><br><span class="line">		s[i] = sum % <span class="number">10</span>;</span><br><span class="line">		sum /= <span class="number">10</span>;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	n = i;</span><br><span class="line">	<span class="keyword">for</span> (i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (i != n - <span class="number">1</span>)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s"</span>, number[s[i]]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>刷题</category>
+      </categories>
+      <tags>
+        <tag>PAT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用Markdown编写文章初体验</title>
     <url>/2020/05/28/%E4%BD%BF%E7%94%A8Markdown%E7%BC%96%E5%86%99%E6%96%87%E7%AB%A0%E5%88%9D%E4%BD%93%E9%AA%8C/</url>
     <content><![CDATA[<p>[简介] 本文主要介绍使用markdown编写文档的常用格式</p>
@@ -98,23 +121,6 @@
       </tags>
   </entry>
   <entry>
-    <title>计算机组成原理-汉明码</title>
-    <url>/2020/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E6%B1%89%E6%98%8E%E7%A0%81/</url>
-    <content><![CDATA[<p>[简介] 本文主要介绍汉明码的结构与纠错原理</p>
-<h1 id="1-检错与纠错能力"><a href="#1-检错与纠错能力" class="headerlink" title="1-检错与纠错能力"></a>1-检错与纠错能力</h1><p>在介绍检错和纠错能力之前，首先需要引入一个概念——最小汉明距离，即从任意一个有效编码变换到另一个有效编码所需改变的最小位数。假设一种编码方式的最小汉明距离为 L，它的最大检错位数为 D，最大纠错位数为 C，则它们之间满足：L-1 = D+C（且D ≥ C）</p>
-<h1 id="2-汉明码的结构"><a href="#2-汉明码的结构" class="headerlink" title="2-汉明码的结构"></a>2-汉明码的结构</h1><p>汉明编码的基本思想就是将数据划分为若干组，每组分别用一位冗余位进行校验（通常为偶校验），同时允许不同组间有交叉，而实际上也正式利用不同组间的交叉，当有几组校验出错时，说明是这几组所共同检测的位发生了错误。</p>
-<p>在进行汉明编码之前，首先要确定所需增加校验位的位数，可以根据 2<sup>r</sup> ≥ d+r+1来确定，其中 r 为所需添加检验位的位数，d 为信息位的位数。它的解释是这样的，增加的 r 位检验位能够表示 2<sup>r</sup> 种不同的情况，它需要至少能标识出 d 位信息位以及 r 位检验位分别出了一位错误以及所有位都没有出错的情况，即 d+r+1 种不同出错情况。</p>
-<p>在确定了所需增加的检验位的位数后，就可以将r位检验位安排到第 2<sup>r</sup> 位上（i = 1，2，3……r），再将信息位按照原来的相对顺序放到剩余位上。而每个检验位的取值可以根据它需要校验的这组数据来确定，以偶检验为例，它的取值即为这组数据各位的异或运算结果。</p>
-<p>下面再介绍每位检验位需要校验哪些位上的数据。为了使得出错后能够根据各检验位组合起来形成的二进制数 r<sub>1</sub>r<sub>2</sub>r<sub>3</sub>…. 的十进制值去指示出错位，就可以将 r<sub>i</sub> (i=1,2,3…) 去检测第e位，其中e的取值为除第 i 位取值为 1、其余位取值任意的所有二进制数的十进制值。</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>机组</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>利用hexo搭建个人博客</title>
     <url>/2020/05/28/%E5%88%A9%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>[简介] 本文主要介绍如何利用hexo搭建个人博客并部署到github上</p>
@@ -160,6 +166,23 @@
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机组成原理-汉明码</title>
+    <url>/2020/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-%E6%B1%89%E6%98%8E%E7%A0%81/</url>
+    <content><![CDATA[<p>[简介] 本文主要介绍汉明码的结构与纠错原理</p>
+<h1 id="1-检错与纠错能力"><a href="#1-检错与纠错能力" class="headerlink" title="1-检错与纠错能力"></a>1-检错与纠错能力</h1><p>在介绍检错和纠错能力之前，首先需要引入一个概念——最小汉明距离，即从任意一个有效编码变换到另一个有效编码所需改变的最小位数。假设一种编码方式的最小汉明距离为 L，它的最大检错位数为 D，最大纠错位数为 C，则它们之间满足：L-1 = D+C（且D ≥ C）</p>
+<h1 id="2-汉明码的结构"><a href="#2-汉明码的结构" class="headerlink" title="2-汉明码的结构"></a>2-汉明码的结构</h1><p>汉明编码的基本思想就是将数据划分为若干组，每组分别用一位冗余位进行校验（通常为偶校验），同时允许不同组间有交叉，而实际上也正式利用不同组间的交叉，当有几组校验出错时，说明是这几组所共同检测的位发生了错误。</p>
+<p>在进行汉明编码之前，首先要确定所需增加校验位的位数，可以根据 2<sup>r</sup> ≥ d+r+1来确定，其中 r 为所需添加检验位的位数，d 为信息位的位数。它的解释是这样的，增加的 r 位检验位能够表示 2<sup>r</sup> 种不同的情况，它需要至少能标识出 d 位信息位以及 r 位检验位分别出了一位错误以及所有位都没有出错的情况，即 d+r+1 种不同出错情况。</p>
+<p>在确定了所需增加的检验位的位数后，就可以将r位检验位安排到第 2<sup>r</sup> 位上（i = 1，2，3……r），再将信息位按照原来的相对顺序放到剩余位上。而每个检验位的取值可以根据它需要校验的这组数据来确定，以偶检验为例，它的取值即为这组数据各位的异或运算结果。</p>
+<p>下面再介绍每位检验位需要校验哪些位上的数据。为了使得出错后能够根据各检验位组合起来形成的二进制数 r<sub>1</sub>r<sub>2</sub>r<sub>3</sub>…. 的十进制值去指示出错位，就可以将 r<sub>i</sub> (i=1,2,3…) 去检测第e位，其中e的取值为除第 i 位取值为 1、其余位取值任意的所有二进制数的十进制值。</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>机组</tag>
       </tags>
   </entry>
 </search>
