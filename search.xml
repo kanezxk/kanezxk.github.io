@@ -185,4 +185,42 @@
         <tag>机组</tag>
       </tags>
   </entry>
+  <entry>
+    <title>PAT乙级_1003</title>
+    <url>/2020/06/03/PAT%E4%B9%99%E7%BA%A7-1003/</url>
+    <content><![CDATA[<h2 id="【介绍】"><a href="#【介绍】" class="headerlink" title="【介绍】"></a>【介绍】</h2><p><strong>答案正确</strong>”是自动判题系统给出的最令人欢喜的回复。本题属于 PAT 的“<strong>答案正确</strong>”大派送 —— 只要读入的字符串满足下列条件，系统就输出“<strong>答案正确</strong>”，否则输出“<strong>答案错误</strong>”。</p>
+<p>得到“<strong>答案正确</strong>”的条件是：</p>
+<ol>
+<li>字符串中必须仅有 <code>P</code>、 <code>A</code>、 <code>T</code>这三种字符，不可以包含其它字符；</li>
+<li>任意形如 <code>xPATx</code> 的字符串都可以获得“<strong>答案正确</strong>”，其中 <code>x</code> 或者是空字符串，或者是仅由字母 <code>A</code> 组成的字符串；</li>
+<li>如果 <code>aPbTc</code> 是正确的，那么 <code>aPbATca</code> 也是正确的，其中 <code>a</code>、 <code>b</code>、 <code>c</code> 均或者是空字符串，或者是仅由字母 <code>A</code> 组成的字符串。</li>
+</ol>
+<p>现在就请你为 PAT 写一个自动裁判程序，判定哪些字符串是可以获得“<strong>答案正确</strong>”的。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>每个测试输入包含 1 个测试用例。第 1 行给出一个正整数 <em>n</em> (&lt;10)，是需要检测的字符串个数。接下来每个字符串占一行，字符串长度不超过 100，且不包含空格。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>每个字符串的检测结果占一行，如果该字符串可以获得“<strong>答案正确</strong>”，则输出 <code>YES</code>，否则输出 <code>NO</code>。</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">8</span><br><span class="line">PAT</span><br><span class="line">PAAT</span><br><span class="line">AAPATAA</span><br><span class="line">AAPAATAAAA</span><br><span class="line">xPATx</span><br><span class="line">PT</span><br><span class="line">Whatever</span><br><span class="line">APAAATAA</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">NO</span><br><span class="line">NO</span><br></pre></td></tr></table></figure>
+
+<h2 id="【经验】"><a href="#【经验】" class="headerlink" title="【经验】"></a>【经验】</h2><p>解本题的核心在于第三个条件：</p>
+<blockquote>
+<ol start="3">
+<li>如果 <code>aPbTc</code> 是正确的，那么 <code>aPbATca</code> 也是正确的，其中 <code>a</code>、 <code>b</code>、 <code>c</code> 均或者是空字符串，或者是仅由字母 <code>A</code> 组成的字符串。</li>
+</ol>
+</blockquote>
+<p>该条件为一个递归条件，可以将整个字符串分为三个部分——<strong>a</strong> : “ P ”之前 、<strong>b</strong>: “ P ” 之后 “ T ”之前、<strong>c</strong> :  “ T “之后，这样我们可以发现随着 b 部分 “ A ” 的数量的增加 ： 1，2，3…..，c 部分包含 “ A “的数量也相应的变为 a 部分 “ A ” 的数量的 1， 2， 3….. 倍。</p>
+<h2 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, i, k, a, b, tag;</span><br><span class="line">    <span class="keyword">char</span> s[<span class="number">100</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> ret[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; n; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        a = i = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s);</span><br><span class="line">        tag = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (s[i] != <span class="string">'P'</span> &amp;&amp; tag) <span class="comment">// 使用变量a记录 a 部分“A”的数量</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">'A'</span>) </span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                a++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                tag = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (tag)</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            b = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (s[i] == <span class="string">'A'</span> &amp;&amp; i++ &lt; <span class="number">100</span>) b++; <span class="comment">// 使用变量 b 记录 b 部分“A”的数量</span></span><br><span class="line">            <span class="keyword">if</span> (s[i++] == <span class="string">'T'</span> &amp;&amp; b != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                b *= a;  	<span class="comment">// c部分 “ A ”的数量为 a 部分的 a 倍</span></span><br><span class="line">                <span class="keyword">while</span> (i &lt; <span class="number">100</span> &amp;&amp; s[i++] == <span class="string">'A'</span> &amp;&amp; b) b--;</span><br><span class="line">                <span class="keyword">if</span> (!b &amp;&amp; !s[i]) ret[k] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) s[i] = <span class="string">'\0'</span>;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i != <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">""</span>); </span><br><span class="line">        <span class="keyword">if</span> (ret[i] == <span class="number">1</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>刷题</category>
+      </categories>
+      <tags>
+        <tag>PAT</tag>
+      </tags>
+  </entry>
 </search>
